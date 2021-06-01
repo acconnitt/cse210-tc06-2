@@ -27,6 +27,9 @@ class Director:
             self.roster.next_player()  # Calls next_player method from Roster class
 
     def _get_inputs(self):
+        """Ask for player guess 
+        Also checks if player imput is valid
+        """
         player = self.roster.get_current()
         self.console.print_blank_line()
         self.console.print_players(self.roster)
@@ -52,7 +55,14 @@ class Director:
         player.guess.check_guess()
         self.win = player.guess.check_win()
 
+
+
     def _do_updates(self):
+        """Check if game is player won the game
+
+        Args:
+            self (Director): An instance of Director.
+        """
         if self.win:
             self.console.print_win(self.roster.get_current())
             self.keep_playing = False
